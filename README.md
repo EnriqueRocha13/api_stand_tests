@@ -1,40 +1,70 @@
-# API Stand Tests
+# Python API Testing Project
 
-## Project Description
-This project is designed to provide a comprehensive suite of tests for API endpoints to ensure functionality, reliability, and performance. It can be utilized by developers to verify the correctness of their API implementations and ensure they meet the expected specifications.
+## Description
+This project provides automated API testing for user creation endpoints using Python and pytest. It includes comprehensive test cases covering positive and negative scenarios.
 
 ## Features
-- Tests for various HTTP methods (GET, POST, PUT, DELETE)
-- Validates response status codes and payloads
-- Automatic generation of test reports
-- Easy configuration of endpoints and test cases
+- Automated user creation endpoint testing
+- Positive and negative test case validation
+- Response code and payload verification
+- User data persistence validation
+- Easy to extend and maintain
+
+## Requirements
+- Python 3.6+
+- pytest
+- requests
 
 ## Installation
 1. Clone the repository:
-   ```
+   ```bash
    git clone https://github.com/EnriqueRocha13/api_stand_tests.git
-   ```
-2. Navigate into the project directory:
-   ```
    cd api_stand_tests
    ```
-3. Install the required dependencies:
-   ```
-   npm install
+2. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
    ```
 
 ## Usage
-Run the tests using the following command:
+Run the tests using pytest:
 ```bash
-npm test
+pytest create_user_test.py -v
 ```
-Review the generated reports in the `reports` directory to see the results of your tests.
 
-## Structure
-- **src/**: Contains the source code for the tests.
-- **tests/**: Contains individual test cases for specific API endpoints.
-- **reports/**: Output directory for test reports.
-- **config/**: Configuration files for the project settings.
+## Project Structure
+```
+api_stand_tests/
+├── configuration.py          # API configuration and endpoints
+├── data.py                   # Test data and headers
+├── sender_stand_request.py   # API request functions
+├── create_user_test.py       # User creation test cases
+├── test_main.py              # Main test execution
+└── README.md
+```
 
-## Contribution
-Contributions are welcome! Feel free to submit a pull request and we'll review it as soon as possible.
+## Test Cases
+The project includes 10 comprehensive test cases:
+
+### Positive Tests
+1. Create user with 2-letter first name
+2. Create user with 15-letter first name
+
+### Negative Tests
+3. Create user with 1-letter first name (error expected)
+4. Create user with 16-letter first name (error expected)
+5. Create user with spaces in first name (error expected)
+6. Create user with special characters (error expected)
+7. Create user with numbers in first name (error expected)
+8. Create user without firstName parameter (error expected)
+9. Create user with empty firstName (error expected)
+10. Create user with numeric type for firstName (error expected)
+
+## Configuration
+Edit `configuration.py` to update API endpoints:
+- `URL_SERVICE`: Base API URL
+- `CREATE_USER_PATH`: User creation endpoint
+- `USERS_TABLE_PATH`: Users database path
+
+## Contributing
+Feel free to submit pull requests and issues. All contributions are welcome!
